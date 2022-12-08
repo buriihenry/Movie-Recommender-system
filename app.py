@@ -21,3 +21,17 @@ movie_list = list(df['movie_title'])
 # creating TMDB Api Object
 tmdb = TMDb()
 tmdb.api_key = 'e955d66146c91573e52a09a5566459d4'
+
+# This Function take movie name list and return their Poster link, Tag Line and Title into dictionary
+def get_poster_link(title_list):
+    """
+    This Function take movie name list and return their Poster link, Tag line and Title into dictionary.
+    """
+    # TMDB Movie Api Object
+    tmdb_movie = Movie()
+
+    # Storing data in to dictionary
+    dic_data = {"Movie_Title": [], "Poster_Links": [], "Tag_line": []}
+
+    for title in title_list:
+        # checking given movie is present in our cache database or not.
