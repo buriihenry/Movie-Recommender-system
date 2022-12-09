@@ -66,4 +66,47 @@ def get_poster_link(title_list):
 @cross_origin()
 def home():
     return render_template('index.html')
-     
+
+@app.route('/', methods=['POST', 'GET'])  # route to show the recommendation in web UI
+@cross_origin()
+# This function take movie name from user, and return 10 similar type of movies.
+def recommendation():
+    if request.method == 'POST':
+        try:
+            # reading the inputs given by the user
+            title = request.form['search']
+            title = title.lower()
+            # create count matrix from this new combined column
+            cv = CountVectorizer()
+            count_matrix = cv.fit_transform(df['comb'])
+
+            # now compute the cosine similarity
+            cosine_sim = cosine_similarity(count_matrix)
+
+            # correcting user input spell (close match from our movie list)
+            correct_title = get_close_matches(title, movie_list, n=3, cutoff=0.6)[0]
+
+            # get the index value of given movie title
+            idx = df['movie_title'][df['movie_title'] == correct_title].index[0]
+
+            # get the pairwise similarity scores of all movies with that movie
+            sim_score = list(enumerate(cosine_sim[idx]))
+
+            # sort the movie based on similarity scores
+            sim_score = sorted(sim_score, key=lambda x: x[1], reverse=True)[0:15]
+
+            # suggested movies are storing into a list
+            suggested_movie_list = []
+            for i in sim_score:
+                movie_index = i[0]
+                suggested_movie_list.append(df['movie_title'][movie_index])
+
+            # calling get_poster_link function to fetch their title and poster link.
+            poster_title_link = get_poster_link(suggested_movie_list)
+            return render_template('recommended.html', output=poster_title_link)
+        except:
+            return render_template("error.html")
+
+if __name__ == '__main__':
+    print("App is running")
+    app.run(debug=True)
