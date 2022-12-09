@@ -22,6 +22,7 @@ movie_list = list(df['movie_title'])
 tmdb = TMDb()
 tmdb.api_key = 'e955d66146c91573e52a09a5566459d4'
 
+
 # This Function take movie name list and return their Poster link, Tag Line and Title into dictionary
 def get_poster_link(title_list):
     """
@@ -31,9 +32,10 @@ def get_poster_link(title_list):
     tmdb_movie = Movie()
 
     # Storing data in to dictionary
-    dic_data = {"Movie_Title": [], "Poster_Links": [], "Tag_line": []}
+    dic_data = {"Movie_Title": [], "Poster_Links": [], "Tag_Line": []}
 
     for title in title_list:
+
         # checking given movie is present in our cache database or not.
         r_df = df_cache[df_cache['Title'] == title]
         try:
@@ -60,12 +62,16 @@ def get_poster_link(title_list):
                 dic_data['Poster_Links'].append(movie_poster_link)
                 dic_data['Tag_Line'].append(movie_tag_line)
         except:
-            pass        
+            pass
+
     return dic_data
-@app.route('/', methods=['GET']) #route to display homepage
+
+
+@app.route('/', methods=['GET'])  # route to display the Home Page
 @cross_origin()
 def home():
     return render_template('index.html')
+
 
 @app.route('/', methods=['POST', 'GET'])  # route to show the recommendation in web UI
 @cross_origin()
@@ -104,8 +110,10 @@ def recommendation():
             # calling get_poster_link function to fetch their title and poster link.
             poster_title_link = get_poster_link(suggested_movie_list)
             return render_template('recommended.html', output=poster_title_link)
+
         except:
             return render_template("error.html")
+
 
 if __name__ == '__main__':
     print("App is running")
