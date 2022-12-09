@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Movie Recommendation</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=10, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!--   <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">-->
+</head>
+
+<body>
+<!-- Navigation Bar-->
+<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+    <a href="/" class="navbar-brand">Home</a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse1">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarCollapse1">
+        <!-- Links -->
+        <div class="navbar-nav">
+            <a href="https://github.com/kapilthakre" class="nav-item nav-link">GitHub</a>
+            <a href="https://www.linkedin.com/in/kapilthakre/" class="nav-item nav-link">About</a>
+        </div>
+    </div>
+</nav>
+
+
+<!-------------------------------- Search box--------------------->
+<br>
+<div class="container">
+    <h2 class="font-weight-bold mb-1"><p style="font-family:Tahoma">Movie Recommendation System</h2>
+    <p style="font-style: italic;">Search Any Hollywood Movie And get similar types of movie recommendation.</p>
+<!-- User Input Search Bar -->
+        <form action="/" method="POST">
+            <div class="form-group">
+                <label for="Age">Search Movie:</label>
+                <input type="string" step="1" class="form-control" placeholder="Ex: Iron man, Avatar" id="Age" name="search" required><br>
+            <div class="button-group" style="margin-top:15px;">
+                <button type="submit" name="submit" class="btn btn-danger">Search</button>
+            </div>
+            </div>
+        </form>
+</div>
+
+
+<!-------------Error Message show here--------------------->
+<br>
+<div class="container">
+    <div class="alert alert-info" role="alert">
+      <h4 class="alert-heading">Oops!</h4>
+      <p>Look like something went wrong, please try to write a correct movie name or the movie which you are trying to search is not in our database.</p>
+    </div>
+
+    <div class="text-center">
+               <!---- Gif Image-->
+        <div class="embed-responsive embed-responsive-4by3">
+          <iframe class="embed-responsive-item" src="/static/confused 404.gif"></iframe>
+        </div>
+    </div>
+</div>
+</body>
