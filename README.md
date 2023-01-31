@@ -27,6 +27,6 @@ Enter the movie name in the text field and hit Submit.
 If everything goes well, you should  be able to see recommended movies on the HTML page!
 
 ```
-Hit Star if you like this project:
+Hit a STAR if you like this project:
 ```
 
