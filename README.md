@@ -26,4 +26,4 @@ Enter the movie name in the text field and hit Submit.
 
 If everything goes well, you should  be able to see recommended movies on the HTML page!
 
-If you like the project . Give it a star  ⭐ and   ```[FORK]```
+If you like the project, Give it a star  ⭐ and   ```[FORK]```
