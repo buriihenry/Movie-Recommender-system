@@ -1,36 +1,35 @@
-## Deploying our Model using Flask
-In this project I will show you how to deploy ML model using Flask 
+Requirements
+Make sure you have the following dependencies installed:
 
-### Requirements
-You must have Scikit Learn, Pandas and Flask installed.
+Scikit Learn
+Pandas
+Flask
+You can install Flask version 2.2.2 using the following command:
 
-Flask version: 2.2.2
+bash
+Copy code
 pip install Flask==2.2.2
+Running the Project
+Navigate to the project home directory.
 
-### Running the project
-1. Ensure that you are in the project home directory. Run the notebook "Movie Recommender.ipynb" first
+Run the Jupyter notebook "Movie Recommender.ipynb." This notebook will create a serialized version of the machine learning model.
 
-This would create a serialized version of our model
+After running the notebook, execute the following command in the terminal to start the Flask API:
 
-2. Run app.py using below command to start Flask API
-```
+bash
+Copy code
 python app.py
-```
-By default, flask will run on port 5000.
+By default, Flask will run on port 5000.
 
-3. Navigate to URL http://127.0.0.1:5000/ (or) http://localhost:5000
+Open your web browser and go to http://127.0.0.1:5000/ or http://localhost:5000.
 
-You should be able to view the homepage.
+You should now see the homepage of the Movie Recommender web application.
 
-Enter the movie name in the text field and hit Submit.
+Enter the name of a movie in the text field and click "Submit."
 
-If everything goes well, you should  be able to see recommended movies on the HTML page!
+If everything is set up correctly, you should receive a list of recommended movies on the HTML page.
 
-<<<<<<< HEAD
-If you like the project. Give it a star  ⭐ and   ```[FORK]```
-=======
-```
-Hit a "STAR" if you like this project:
-```
+Enjoy exploring movie recommendations with our Flask-based deployment!
 
->>>>>>> ecc57fe79fa5ae3ba3a8b67ebc471abc73041cd4
+Note
+Ensure that you have a reliable internet connection and all dependencies are properly installed before running the project. If you encounter any issues, refer to the documentation of the respective libraries or Flask for assistance
