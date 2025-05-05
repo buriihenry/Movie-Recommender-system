@@ -1,57 +1,136 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Movie Recommendation</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=10, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>Movie Recommendation</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .navbar {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%) !important;
+            padding: 1rem 2rem;
+        }
+        .navbar-brand {
+            font-weight: 600;
+            font-size: 1.5rem;
+        }
+        .hero-section {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            padding: 4rem 0;
+            margin-bottom: 2rem;
+        }
+        .search-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: -3rem;
+            position: relative;
+            z-index: 1;
+        }
+        .search-title {
+            font-weight: 600;
+            color: #2d2d2d;
+            margin-bottom: 0.5rem;
+        }
+        .search-subtitle {
+            color: #6c757d;
+            margin-bottom: 1.5rem;
+        }
+        .form-control {
+            border-radius: 25px;
+            padding: 0.8rem 1.5rem;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+        .form-control:focus {
+            border-color: #dc3545;
+            box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+        }
+        .btn-search {
+            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+            border: none;
+            border-radius: 25px;
+            padding: 0.8rem 2rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .btn-search:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(220, 53, 69, 0.3);
+        }
+        .movie-gif {
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 2rem;
+        }
+        .nav-link {
+            color: rgba(255, 255, 255, 0.8) !important;
+            transition: all 0.3s ease;
+        }
+        .nav-link:hover {
+            color: white !important;
+            transform: translateY(-1px);
+        }
+    </style>
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a href="/" class="navbar-brand">MovieRec</a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse1">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
+        <div class="collapse navbar-collapse" id="navbarCollapse1">
+            <div class="navbar-nav ml-auto">
+                <a href="#" class="nav-item nav-link">GitHub</a>
+                <a href="#" class="nav-item nav-link">About</a>
+            </div>
+        </div>
+    </nav>
 
-<!---------------- Navigation Bar----------->
-<!---------------- Navigation Bar----------->
-<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
-    <a href="/" class="navbar-brand">Home</a>
-    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse1">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarCollapse1">
-        <!-- Links -->
-        <div class="navbar-nav">
-            <a href="https://github.com/buriihenry" class="nav-item nav-link">GitHub</a>
-            <a href="https://www.linkedin.com/in/henry-burii/" class="nav-item nav-link">About</a>
+    <div class="hero-section">
+        <div class="container text-center">
+            <h1 class="display-4 font-weight-bold mb-3">Discover Your Next Favorite Movie</h1>
+            <p class="lead">Find similar movies based on your preferences</p>
         </div>
     </div>
-</nav>
 
+    <div class="container">
+        <div class="search-container">
+            <h2 class="search-title">Movie Recommendation System</h2>
+            <p class="search-subtitle">Search any Hollywood movie and get personalized recommendations</p>
+            
+            <form action="/" method="POST">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Enter a movie title (e.g., Iron Man, Avatar)" id="search" name="search" required>
+                    <div class="text-center mt-4">
+                        <button type="submit" class="btn btn-search btn-lg">
+                            <i class="fas fa-search mr-2"></i>Find Similar Movies
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
 
-<!-------------------------------- Search box--------------------->
-<br>
-<div class="container">
-    <h2 class="font-weight-bold mb-1"><p style="font-family:Tahoma">Movie Recommendation System</h2>
-    <p style="font-style: italic;">Search Any Hollywood Movie And get similar types of movie recommendation.</p>
-<!-- User Input Search Bar -->
-        <form action="/" method="POST">
-            <div class="form-group">
-                <label for="search">Search Movie:</label>
-                <input type="string" step="1" class="form-control" placeholder="Ex: Iron man, Avatar" id="search" name="search" required><br>
-            <div class="button-group" style="margin-top:15px;">
-                <button type="submit" name="submit" class="btn btn-danger">Search</button>
-            </div>
-            </div>
-        </form>
-</div>
-
-<!--------------Image--------------------->
-<div class="container">
-    <div class="text-center"><br>
-        <!---- Gif Image-->
-      <img src="/static/home.gif" class="img-fluid" alt="Responsive image">
+        <div class="text-center">
+            <img src="/static/home.gif" class="movie-gif img-fluid" alt="Movie recommendation illustration">
+        </div>
     </div>
-</div>
+
+    <footer class="bg-dark text-white-50 py-4 mt-5">
+        <div class="container text-center">
+            <small>Copyright &copy; Movie Rec</small>
+        </div>
+    </footer>
 </body>
+</html>

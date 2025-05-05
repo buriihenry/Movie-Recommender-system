@@ -1,171 +1,159 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Movie Recommendation</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=10, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>Movie Recommendations</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .navbar {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%) !important;
+            padding: 1rem 2rem;
+        }
+        .navbar-brand {
+            font-weight: 600;
+            font-size: 1.5rem;
+        }
+        .search-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 2rem 0;
+        }
+        .movie-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        .movie-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+        .movie-poster {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+        .movie-info {
+            padding: 1.5rem;
+        }
+        .movie-title {
+            font-weight: 600;
+            color: #2d2d2d;
+            margin-bottom: 0.5rem;
+        }
+        .movie-tagline {
+            color: #6c757d;
+            font-style: italic;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .btn-select {
+            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+            border: none;
+            border-radius: 25px;
+            padding: 0.5rem 1.5rem;
+            color: white;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        .btn-select:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(220, 53, 69, 0.3);
+            color: white;
+        }
+        .section-title {
+            font-weight: 600;
+            color: #2d2d2d;
+            margin-bottom: 0.5rem;
+        }
+        .section-subtitle {
+            color: #6c757d;
+            margin-bottom: 2rem;
+        }
+        .nav-link {
+            color: rgba(255, 255, 255, 0.8) !important;
+            transition: all 0.3s ease;
+        }
+        .nav-link:hover {
+            color: white !important;
+            transform: translateY(-1px);
+        }
+    </style>
 </head>
-
 <body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a href="/" class="navbar-brand">MovieRec</a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse1">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-
-<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
-    <a href="/" class="navbar-brand">Home</a>
-    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse1">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarCollapse1">
-        <!-- Links -->
-        <div class="navbar-nav">
-            <a href="https://github.com/buriihenry" class="nav-item nav-link">GitHub</a>
-            <a href="https://www.linkedin.com/in/henry-burii" class="nav-item nav-link">About</a>
-        </div>
-    </div>
-</nav>
-
-
-<!------------------------Search Bar---------------->
-<br>
-<div class="container">
-    <h2 class="font-weight-bold mb-1"><p style="font-family:Tahoma">Movie Recommendation System</h2>
-    <p style="font-style: italic;">Search Any Hollywood Movie And get similar types of movie recommendation.</p>
-<!-- User Input Search Bar -->
-        <form action="/" method="POST">
-            <div class="form-group">
-                <label for="Age">Search Movie:</label>
-                <input type="string" step="1" class="form-control" placeholder="Ex: Iron man, Avengers" id="Age" name="search" required><br>
-            <div class="button-group" style="margin-top:15px;">
-                <button type="submit" name="submit" class="btn btn-danger">Search</button>
+        <div class="collapse navbar-collapse" id="navbarCollapse1">
+            <div class="navbar-nav ml-auto">
+                <a href="https://github.com/buriihenry" class="nav-item nav-link">GitHub</a>
+                <a href="https://www.linkedin.com/in/henry-burii" class="nav-item nav-link">About</a>
             </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="search-container">
+            <h2 class="section-title">Movie Recommendation System</h2>
+            <p class="section-subtitle">Search any Hollywood movie and get personalized recommendations</p>
+            
+            <form action="/" method="POST">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Enter a movie title (e.g., Iron Man, Avatar)" id="search" name="search" required>
+                    <div class="text-center mt-4">
+                        <button type="submit" class="btn btn-select">
+                            <i class="fas fa-search mr-2"></i>Find Similar Movies
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <h3 class="section-title">Recommended Movies For You</h3>
+        <p class="section-subtitle">Select any movie to get more recommendations</p>
+
+        <form action="/" method="POST">
+            <div class="row">
+                {% for i in range(8) %}
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="movie-card">
+                        <img src="{{output['Poster_Links'][i]}}" alt="{{output['Movie_Title'][i]}}" class="movie-poster">
+                        <div class="movie-info">
+                            <h5 class="movie-title">{{output['Movie_Title'][i]}}</h5>
+                            <p class="movie-tagline">{{output['Tag_Line'][i]}}</p>
+                            <button type="submit" class="btn btn-select" name="search" value="{{output['Movie_Title'][i]}}">
+                                <i class="fas fa-film mr-2"></i>Select Movie
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
             </div>
         </form>
-</div>
-
-
-<!------------------------ Recommended card box---------------->
-<div class="container py-5">
-
-<form action="/" method="POST">
-    <!-- First Row --->
-    <h3 class="font-weight-normal mb-1">Recommended Movies For You.</h3>
-    <p class="font-italic text-muted mb-4">Select any of the movies to get more recommendation.</p>
-
-    <div class="row pb-5 mb-4">
-        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-            <!-- Card-->
-            <div class="card rounded shadow-sm border-0">
-                <div class="card-body p-4"><img src="{{output['Poster_Links'][0]}}" alt="" class="img-fluid d-block mx-auto mb-3">
-                    <h5>{{output['Movie_Title'][0]}}</h5>
-                    <p class="small text-muted font-italic">{{output['Tag_Line'][0]}}</p>
-                    <button type="submit" class="btn btn-light" name="search" value="{{output['Movie_Title'][0]}}">Select</a></button>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-            <!-- Card-->
-            <div class="card rounded shadow-sm border-0">
-                <div class="card-body p-4"><img src="{{output['Poster_Links'][1]}}" alt="" class="img-fluid d-block mx-auto mb-3">
-                    <h5>{{output['Movie_Title'][1]}}</h5>
-                    <p class="small text-muted font-italic">{{output['Tag_Line'][1]}}</p>
-                    <button type="submit" class="btn btn-light" name="search" value="{{output['Movie_Title'][1]}}">Select</a></button>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-            <!-- Card-->
-            <div class="card rounded shadow-sm border-0">
-                <div class="card-body p-4"><img src="{{output['Poster_Links'][2]}}" alt="" class="img-fluid d-block mx-auto mb-3">
-                    <h5>{{output['Movie_Title'][2]}}</h5>
-                    <p class="small text-muted font-italic">{{output['Tag_Line'][2]}}</p>
-                    <button type="submit" class="btn btn-light" name="search" value="{{output['Movie_Title'][2]}}">Select</a></button>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-            <!-- Card-->
-            <div class="card rounded shadow-sm border-0">
-                <div class="card-body p-4"><img src="{{output['Poster_Links'][3]}}" alt="" class="img-fluid d-block mx-auto mb-3">
-                    <h5> {{output['Movie_Title'][3]}}</h5>
-                    <p class="small text-muted font-italic">{{output['Tag_Line'][3]}}</p>
-                    <button type="submit" class="btn btn-light" name="search" value="{{output['Movie_Title'][3]}}">Select</a></button>
-                </div>
-            </div>
-        </div>
     </div>
 
-        <div class="row pb-5 mb-4">
-        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-            <!-- Card-->
-            <div class="card rounded shadow-sm border-0">
-                <div class="card-body p-4"><img src="{{output['Poster_Links'][4]}}" alt="" class="img-fluid d-block mx-auto mb-3">
-                    <h5>{{output['Movie_Title'][4]}}</h5>
-                    <p class="small text-muted font-italic">{{output['Tag_Line'][4]}}</p>
-                    <button type="submit" class="btn btn-light" name="search" value="{{output['Movie_Title'][4]}}">Select</a></button>
-                </div>
-            </div>
+    <footer class="bg-dark text-white-50 py-4 mt-5">
+        <div class="container text-center">
+            <small>Copyright &copy; Henry Burii</small>
         </div>
-
-        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-            <!-- Card-->
-            <div class="card rounded shadow-sm border-0">
-                <div class="card-body p-4"><img src="{{output['Poster_Links'][5]}}" alt="" class="img-fluid d-block mx-auto mb-3">
-                    <h5>{{output['Movie_Title'][5]}}</h5>
-                    <p class="small text-muted font-italic">{{output['Tag_Line'][5]}}</p>
-                    <button type="submit" class="btn btn-light" name="search" value="{{output['Movie_Title'][5]}}">Select</a></button>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-            <!-- Card-->
-            <div class="card rounded shadow-sm border-0">
-                <div class="card-body p-4"><img src="{{output['Poster_Links'][6]}}" alt="" class="img-fluid d-block mx-auto mb-3">
-                    <h5>{{output['Movie_Title'][6]}}</h5>
-                    <p class="small text-muted font-italic">{{output['Tag_Line'][6]}}</p>
-                    <button type="submit" class="btn btn-light" name="search" value="{{output['Movie_Title'][6]}}">Select</a></button>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-            <!-- Card-->
-            <div class="card rounded shadow-sm border-0">
-                <div class="card-body p-4"><img src="{{output['Poster_Links'][7]}}" alt="" class="img-fluid d-block mx-auto mb-3">
-                    <h5> {{output['Movie_Title'][7]}}</h5>
-                    <p class="small text-muted font-italic">{{output['Tag_Line'][7]}}</p>
-                    <button type="submit" class="btn btn-light" name="search" value="{{output['Movie_Title'][7]}}">Select</a></button>
-                </div>
-            </div>
-        </div>
-    </div>
-</form>
-</div>
-
-
-
-<!----------------- Footer --------------------->
-<div id="page-content">
-<div class="container text-center">
-  <div class="row justify-content-center">
-    <div class="col-md-7">
-      <h1 class="font-weight-light mt-4 text-white">Sticky Footer using Flexbox</h1>
-      <p class="lead text-white-50"></p>
-    </div>
-  </div>
-</div>
-</div>
-<footer id="sticky-footer" class="py-4 bg-dark text-white-50">
-<div class="container text-center">
-  <small>Copyright &copy; Henry Burii</small>
-</div>
-</footer>
-
+    </footer>
 </body>
+</html>
